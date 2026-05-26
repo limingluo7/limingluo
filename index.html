@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Liming Luo — Full-Stack & AI Engineer</title>
+<meta name="description" content="Liming Luo — Versatile Full-Stack Developer and AI Engineer specializing in LLM-powered applications and AI Agent architectures." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --primary: #18181B;
+    --secondary: #3F3F46;
+    --accent: #2563EB;
+    --bg: #FAFAFA;
+    --surface: #FFFFFF;
+    --fg: #09090B;
+    --muted-fg: #71717A;
+    --muted: #F4F4F5;
+    --border: #E4E4E7;
+    --ring: rgba(37, 99, 235, 0.35);
+    --shadow: 0 1px 2px rgba(9,9,11,0.04), 0 8px 24px -12px rgba(9,9,11,0.12);
+    --maxw: 760px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: #FAFAFA;
+      --secondary: #D4D4D8;
+      --accent: #60A5FA;
+      --bg: #09090B;
+      --surface: #18181B;
+      --fg: #FAFAFA;
+      --muted-fg: #A1A1AA;
+      --muted: #27272A;
+      --border: #27272A;
+      --ring: rgba(96, 165, 250, 0.4);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.6);
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Archivo', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+  }
+
+  ::selection { background: var(--accent); color: #fff; }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Header / Hero ---------- */
+  header {
+    padding: 96px 0 56px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-size: clamp(40px, 8vw, 68px);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .role {
+    font-size: clamp(18px, 3vw, 21px);
+    font-weight: 500;
+    color: var(--secondary);
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 28px;
+  }
+
+  .summary {
+    font-size: 17px;
+    color: var(--muted-fg);
+    max-width: 64ch;
+  }
+
+  /* ---------- Contact bar ---------- */
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--secondary);
+    transition: border-color .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+  }
+  a.chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  a.chip:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+  .chip svg { width: 16px; height: 16px; stroke: currentColor; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 40px 0; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 36px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-head h2 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted-fg);
+  }
+  .section-head .num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* ---------- Skills ---------- */
+  .skill-group { margin-bottom: 28px; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 14px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    padding: 6px 13px;
+    background: var(--muted);
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--secondary);
+    transition: background .25s var(--ease), color .25s var(--ease);
+  }
+  .tag:hover { background: var(--accent); color: #fff; }
+
+  /* ---------- Projects ---------- */
+  .project {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+    margin-bottom: 20px;
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+  }
+  .project:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent);
+  }
+  .project-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 16px;
+    margin-bottom: 6px;
+  }
+  .project h3 {
+    font-size: 21px;
+    font-weight: 600;
+  }
+  .project-role {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif;
+    white-space: nowrap;
+  }
+  .project ul { list-style: none; margin-top: 16px; }
+  .project li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    color: var(--muted-fg);
+    font-size: 15px;
+  }
+  .project li:last-child { margin-bottom: 0; }
+  .project li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+  .project li.phase {
+    margin-top: 14px;
+    padding: 12px 14px 12px 16px;
+    background: var(--muted);
+    border-radius: 10px;
+    color: var(--secondary);
+    font-size: 14px;
+  }
+  .project li.phase::before { display: none; }
+  .project li.phase b { color: var(--primary); font-weight: 600; }
+
+  /* ---------- Education ---------- */
+  .edu-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-school { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; color: var(--primary); }
+  .edu-degree { font-size: 15px; color: var(--muted-fg); }
+  .edu-meta { font-size: 14px; font-weight: 500; color: var(--secondary); text-align: right; }
+  .edu-loc { font-size: 13px; color: var(--muted-fg); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 64px 0 80px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  footer h2 { font-size: clamp(26px, 5vw, 36px); font-weight: 700; margin-bottom: 12px; }
+  footer p { color: var(--muted-fg); margin-bottom: 28px; }
+  .footer-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 999px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: transform .25s var(--ease), filter .25s var(--ease);
+  }
+  .footer-cta:hover { transform: translateY(-2px); filter: brightness(1.08); }
+  .footer-cta:focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; }
+  .footer-cta svg { width: 18px; height: 18px; stroke: currentColor; }
+  .copyright { margin-top: 40px; font-size: 13px; color: var(--muted-fg); }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s var(--ease), transform .7s var(--ease);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 64px 0 40px; }
+    .project { padding: 22px; }
+    .edu-meta, .edu-loc { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <header class="reveal">
+    <p class="eyebrow">Full-Stack &amp; AI Engineer</p>
+    <h1>Liming Luo</h1>
+    <p class="role">Building &amp; deploying LLM-powered applications and AI Agent architectures</p>
+    <p class="summary">
+      Versatile Full-Stack Developer and AI Engineer combining a robust academic background in
+      Artificial Intelligence with a foundation in Translation and Localization. I excel at
+      conceptualizing and delivering end-to-end intelligent solutions — from generative gaming
+      NPCs to RAG-based educational voice agents — across AI, backend, and frontend (iOS / Vue) layers.
+    </p>
+    <div class="contacts">
+      <a class="chip" href="mailto:limingluo7@gmail.com" aria-label="Email Liming Luo">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        limingluo7@gmail.com
+      </a>
+      <a class="chip" href="tel:+8613770877657" aria-label="Call Liming Luo">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +86 137 7087 7657
+      </a>
+    </div>
+  </header>
+
+  <section id="skills" class="reveal">
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2>Technical Skills</h2>
+    </div>
+
+    <div class="skill-group">
+      <p class="skill-label">AI &amp; LLM</p>
+      <div class="tags">
+        <span class="tag">LLM Integration</span>
+        <span class="tag">Agentic Architecture</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">LangGraph</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">Context / Memory Management</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <p class="skill-label">Languages &amp; Backend</p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Swift</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">SQL</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Docker</span>
+        <span class="tag">RESTful APIs</span>
+        <span class="tag">System Architecture</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Git / GitHub</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <p class="skill-label">Frontend &amp; Mobile</p>
+      <div class="tags">
+        <span class="tag">iOS Development</span>
+        <span class="tag">Vue.js</span>
+        <span class="tag">Web Interfaces</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head reveal">
+      <span class="num">02</span>
+      <h2>Selected Freelance &amp; Independent Projects</h2>
+    </div>
+
+    <article class="project reveal">
+      <div class="project-top">
+        <h3>Dr. Owl — AI Voice Companion</h3>
+        <span class="project-role">Lead AI &amp; Full-Stack Developer</span>
+      </div>
+      <p style="color:var(--muted-fg);font-size:14px;">Early English education platform</p>
+      <ul>
+        <li>Architected and developed a multi-modular backend for the educational AI application "Dr. Owl" using FastAPI, Docker, and LangGraph.</li>
+        <li>Designed an interactive, voice-enabled web AI agent (an owl avatar) tailored for primary school students, assisting them in reading and understanding English literature classics.</li>
+        <li>Engineered a sophisticated AI pipeline integrating long/short-term memory and RAG, enabling natural, context-aware conversations about book contents.</li>
+        <li class="phase"><b>Current Phase:</b> Leading the AI and iOS frontend development for the project's next-generation mobile application, expanding core functionalities for a wider user base.</li>
+      </ul>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-top">
+        <h3>Smart Property Management Customer Service System</h3>
+        <span class="project-role">AI Implementation Lead</span>
+      </div>
+      <ul>
+        <li>Spearheaded the AI architecture for a property management platform to automate customer service and streamline the maintenance reporting workflow.</li>
+        <li>Integrated the AI system with internal homeowner databases and property management platforms, enabling secure and personalized resident interactions.</li>
+        <li>Leveraged RAG technology to process and index extensive community documents, announcements, and public notices, resolving the majority of resident queries automatically.</li>
+      </ul>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-top">
+        <h3>Generative AI Narrative Web Game</h3>
+        <span class="project-role">AI &amp; Backend Developer</span>
+      </div>
+      <p style="color:var(--muted-fg);font-size:14px;">Jinling / Nanjing City</p>
+      <ul>
+        <li>Developed the backend and core AI engine for an open-ended web RPG set in the historical city of Jinling, where dynamic storylines were entirely driven by Generative AI.</li>
+        <li>Designed and implemented independent AI NPCs with distinct personalities, backstories, and hidden objectives to facilitate emergent, highly responsive player interactions.</li>
+        <li>Built the structural narrative framework that allowed the LLM to seamlessly generate and adapt the game's plot based on player exploration and choices.</li>
+      </ul>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-top">
+        <h3>Contextual Vocabulary Learning iOS App</h3>
+        <span class="project-role">Independent Solo Developer · Ongoing</span>
+      </div>
+      <ul>
+        <li>Independently developing an iOS application (AI, iOS frontend, and backend) that utilizes LLMs to rethink vocabulary memorization.</li>
+        <li>Designing an interactive core loop where users learn and retain words by generating sentences within practical, real-life scenarios — leveraging AI for immediate feedback and correction.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="education" class="reveal">
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2>Education</h2>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <p class="edu-school">University of Southampton</p>
+        <p class="edu-degree">MSc, Artificial Intelligence</p>
+      </div>
+      <div>
+        <p class="edu-meta">2020 – 2021</p>
+        <p class="edu-loc">United Kingdom</p>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <p class="edu-school">Beijing Language and Culture University</p>
+        <p class="edu-degree">BA, Translation and Localization</p>
+      </div>
+      <div>
+        <p class="edu-meta">2016 – 2020</p>
+        <p class="edu-loc">Beijing, China</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="reveal">
+  <div class="wrap">
+    <h2>Let's build something intelligent.</h2>
+    <p>Open to AI engineering and full-stack opportunities.</p>
+    <a class="footer-cta" href="mailto:limingluo7@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Get in touch
+    </a>
+    <p class="copyright">© 2026 Liming Luo</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items = document.querySelectorAll('.reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
